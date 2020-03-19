@@ -95,20 +95,20 @@ if enableStream:
 if enableMyProgram:
     dataR, camS = Pipe(duplex = False)
     angleR, dataS = Pipe(duplex = False)
-    controlgpsR, gpsS = Pipe(duplex = False)
+    # controlgpsR, gpsS = Pipe(duplex = False)
     serialR, angleS = Pipe(duplex = False)
-    messageR, serialS = Pipe(duplex = False)
+    # messageR, serialS = Pipe(duplex = False)
     
     camProcess = CameraProcess([], [camS])
     allProcesses.append(camProcess)
     
-    dataAcqProcess = DataAcquisition([dataR], [dataS, gpsS])
+    dataAcqProcess = DataAcquisition([dataR], [dataS])  # , gpsS])
     allProcesses.append(dataAcqProcess)
     
-    brainProcess = Brain([angleR, messageR, controlgpsR], [angleS])            # for now just one pipe
+    brainProcess = Brain([angleR], [angleS])   # controlgpsR, messageR
     allProcesses.append(brainProcess)
     
-    shProcess = SerialHandler([serialR], [serialS])
+    shProcess = SerialHandler([serialR], [])  # serialS])
     allProcesses.append(shProcess)
         
 

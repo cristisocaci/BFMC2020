@@ -6,9 +6,9 @@ from random import randrange
 from PositionSimulator import simulator
 from multiprocessing import Pipe
 
-class PositionThread(Thread):
+class PositionThread:  #(Thread):
     def __init__(self, inPs, outQs):
-        super(PositionThread, self).__init__()
+        #super(PositionThread, self).__init__()
         self.inP = inPs
         self.outQs = outQs
         tree = ElementTree.parse('path.xml')
