@@ -18,14 +18,13 @@ class Brain(WorkerProcess):
         super(Brain, self).__init__(inPs, outPs)
         self.angleQueue = Queue()
         #self.nucleo_data_queue = Queue()
-        self.lineQueue = Queue()
         #self.gpsQueue = Queue()
 
     def _init_threads(self):
-        steerAngTh = SteeringAngle(self.inPs[0], [self.angleQueue, self.lineQueue])
+        steerAngTh = SteeringAngle(self.inPs[0], [self.angleQueue])
         self.threads.append(steerAngTh)
         
-        controlTh = Controller([self.angleQueue, self.lineQueue], self.outPs[0], [])
+        controlTh = Controller([self.angleQueue], self.outPs[0], [])
         self.threads.append(controlTh)
 
         # posTh = PositionThread([self.inPs[2]], [self.gpsQueue])

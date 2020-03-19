@@ -10,7 +10,7 @@ class Controller(ThreadWithStop):
         Args:
             inQs[0]: input from steering angle thread ( gives a steering angle )
             outP: sends commands to serial handler
-            inPs[0]: from sign detection
+            inPs[0]: from sign detection  -- inactive
 
         """
         super(Controller, self).__init__()
@@ -91,9 +91,8 @@ class Controller(ThreadWithStop):
 
         while self._running:
 
-            steer_ang = self.inQs[0].get()
+            steer_ang, lines, dist_from_right, dist_from_left = self.inQs[0].get()
             self.logger.debug('Control: steering angle: ' + str(steer_ang))
-            lines, dist_from_right, dist_from_left = self.inQs[1].get()
             self.logger.debug('Control: lines: ' + str(lines) + ', dist right: ' + str(dist_from_right) + ', dist left: ' + str(dist_from_left))
             sign = 0  # self.inPs[0].recv()
             # stop = 1; prioritate = 2; parcare = 3; trecere = 4; nimic = 0
