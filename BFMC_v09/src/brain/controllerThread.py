@@ -36,7 +36,7 @@ class Controller(ThreadWithStop):
         sleep(0.5)
         self.outP.send({'action': 'MCTL', 'speed': self.forwardSpeed, 'steerAngle': 0.0})
 
-    def make_command(self, steer_angle=0, speed=0.17, stop=False, debugInfo = 'Forward: '):
+    def make_command(self, steer_angle=0.0, speed=0.17, stop=False, debugInfo = 'Forward: '):
         if stop:
             data = {'action': 'BRAK', 'steerAngle': float(0)}
         else:
@@ -52,13 +52,13 @@ class Controller(ThreadWithStop):
             steer = -max_steer
         self.outP.send(self.make_command(steer, speed, debugInfo='Forward: '))
 
-    def backward(self, speed=-0.18, steer=0, time=0.5):
+    def backward(self, speed=-0.18, steer=0.0, time=0.5):
         self.outP.send(self.make_command(stop=True, debugInfo='Backward: '))        
         self.outP.send(self.make_command(steer_angle=steer, speed=speed, debugInfo='Bakcward: '))
         sleep(time)
         self.outP.send(self.make_command(stop=True, debugInfo='Backward: '))
 
-    def stop(self, time=2):
+    def stop(self, time=2.0):
         self.outP.send(self.make_command(stop=True, debugInfo='Stop: '))
         sleep(time)
 
