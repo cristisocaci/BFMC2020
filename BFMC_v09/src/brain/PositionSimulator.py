@@ -14,7 +14,7 @@ class simulator(Thread):
         count = 0
         while True:
             self.outP.send((self.x,self.y))
-            self.x += speed
+            self.x += self.speed
             sleep(1)
             count += 1
             if count == 15:
