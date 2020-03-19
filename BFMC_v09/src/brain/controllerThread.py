@@ -130,7 +130,10 @@ class Controller(ThreadWithStop):
                         self.backward(speed=self.backwardSpeed, time=1)
                         misreadings = 0
                 elif lines == 2:
-                    angle = steer_ang / abs(steer_ang) * 5
+                    if steer_ang != 0:
+                        angle = steer_ang / abs(steer_ang) * 5
+                    else:
+                        angle = 0
                     self.outP.send(self.make_command(steer_angle=angle, speed=self.safeSpeed))
 
             elif sign == 1:     # stops at the sign
