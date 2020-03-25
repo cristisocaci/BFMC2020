@@ -19,8 +19,8 @@ class DataAcquisition(WorkerProcess):
         laneDet = LaneDetector(self.inPs[0], self.outPs[0])
         self.threads.append(laneDet)
         
-        gpsTracker = GpsTracker(self.outPs[1])
-        self.threads.append(gpsTracker)
+        # gpsTracker = GpsTracker(self.outPs[1])
+        # self.threads.append(gpsTracker)
         
     def run(self):
         super(DataAcquisition, self).run()

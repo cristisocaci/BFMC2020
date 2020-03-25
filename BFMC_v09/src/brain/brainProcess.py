@@ -11,25 +11,24 @@ class Brain(WorkerProcess):
         """
         Args:
             inPs[0]: from LaneDetector
-            inPs[1]: from SerialHandler
-            inPs[2]: from gps
+            inPs[1]: from SerialHandler  ---inactiv
+            inPs[2]: from gps ---inactiv
             outPs:list
         """
         super(Brain, self).__init__(inPs, outPs)
         self.angleQueue = Queue()
         #self.nucleo_data_queue = Queue()
-        self.lineQueue = Queue()
-        self.gpsQueue = Queue()
+        #self.gpsQueue = Queue()
 
     def _init_threads(self):
-        steerAngTh = SteeringAngle(self.inPs[0], [self.angleQueue, self.lineQueue])
+        steerAngTh = SteeringAngle(self.inPs[0], [self.angleQueue])
         self.threads.append(steerAngTh)
         
-        controlTh = Controller([self.angleQueue, self.lineQueue], self.outPs[0], [])
+        controlTh = Controller([self.angleQueue], self.outPs[0], [])
         self.threads.append(controlTh)
 
-        posTh = PositionThread([self.inPs[2]], [self.gpsQueue])
-        self.threads.append(posTh)
+        # posTh = PositionThread([self.inPs[2]], [self.gpsQueue])
+        # self.threads.append(posTh)
 
         #messRecvTh = MessageReceiver(self.inPs[1], [self.nucleo_data_queue])
         #self.threads.append(messRecvTh)

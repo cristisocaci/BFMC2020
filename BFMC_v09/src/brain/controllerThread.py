@@ -10,7 +10,7 @@ class Controller(ThreadWithStop):
         Args:
             inQs[0]: input from steering angle thread ( gives a steering angle )
             outP: sends commands to serial handler
-            inPs[0]: from sign detection
+            inPs[0]: from sign detection  -- inactive
 
         """
         super(Controller, self).__init__()
@@ -36,7 +36,7 @@ class Controller(ThreadWithStop):
         sleep(0.5)
         self.outP.send({'action': 'MCTL', 'speed': self.forwardSpeed, 'steerAngle': 0.0})
 
-    def make_command(self, steer_angle=0, speed=0.17, stop=False, debugInfo = 'Forward: '):
+    def make_command(self, steer_angle=0.0, speed=0.17, stop=False, debugInfo = 'Forward: '):
         if stop:
             data = {'action': 'BRAK', 'steerAngle': float(0)}
         else:
@@ -52,13 +52,13 @@ class Controller(ThreadWithStop):
             steer = -max_steer
         self.outP.send(self.make_command(steer, speed, debugInfo='Forward: '))
 
-    def backward(self, speed=-0.18, steer=0, time=0.5):
+    def backward(self, speed=-0.18, steer=0.0, time=0.5):
         self.outP.send(self.make_command(stop=True, debugInfo='Backward: '))        
         self.outP.send(self.make_command(steer_angle=steer, speed=speed, debugInfo='Bakcward: '))
         sleep(time)
         self.outP.send(self.make_command(stop=True, debugInfo='Backward: '))
 
-    def stop(self, time=2):
+    def stop(self, time=2.0):
         self.outP.send(self.make_command(stop=True, debugInfo='Stop: '))
         sleep(time)
 
@@ -91,9 +91,8 @@ class Controller(ThreadWithStop):
 
         while self._running:
 
-            steer_ang = self.inQs[0].get()
+            steer_ang, lines, dist_from_right, dist_from_left = self.inQs[0].get()
             self.logger.debug('Control: steering angle: ' + str(steer_ang))
-            lines, dist_from_right, dist_from_left = self.inQs[1].get()
             self.logger.debug('Control: lines: ' + str(lines) + ', dist right: ' + str(dist_from_right) + ', dist left: ' + str(dist_from_left))
             sign = 0  # self.inPs[0].recv()
             # stop = 1; prioritate = 2; parcare = 3; trecere = 4; nimic = 0
@@ -130,7 +129,10 @@ class Controller(ThreadWithStop):
                         self.backward(speed=self.backwardSpeed, time=1)
                         misreadings = 0
                 elif lines == 2:
-                    angle = steer_ang / abs(steer_ang) * 5
+                    if steer_ang != 0:
+                        angle = steer_ang / abs(steer_ang) * 5
+                    else:
+                        angle = 0
                     self.outP.send(self.make_command(steer_angle=angle, speed=self.safeSpeed))
 
             elif sign == 1:     # stops at the sign

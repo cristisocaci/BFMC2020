@@ -36,13 +36,15 @@ class PositionThread(Thread):
                     print('Position: ', x, y, ' Around node: ', self.currentNode.id)
                     break
                 else:
-                    currentNode = self.road[self.road.index(currentNode) + 1]
+                    index = self.road.index(currentNode) + 1
+                    print(index)
+                    currentNode = self.road[index]
 
 
-s, r = Pipe(duplex=False)
+r, s = Pipe(duplex=False)
 a = PositionThread(r, 2)
 b = simulator(0.2, s)
-a.run()
-b.run()
+a.start()
+b.start()
 sleep(7)
 a.stop()
