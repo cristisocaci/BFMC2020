@@ -187,13 +187,13 @@ class LaneDetector: #Thread
         """
 
         """
-        cap = cv2.VideoCapture('/home/mgrrr/Documents/dataset/Records/Set1/w5.mp4')  #TO BE DELETED!!!
+        #cap = cv2.VideoCapture('/home/mgrrr/Documents/dataset/Records/Set1/w2.mp4')  #TO BE DELETED!!!
 
         #frame_copy = cv2.imread('D:\\Cristi\\BoschFutureMobility\\Records\\testCurba4.png')
 
         while True:
-            #data = self.inP.recv()
-            # frame_copy = data[1]
+            data = self.inP.recv()
+            frame_copy = data[1]
             _, frame_copy = cap.read()
             frame_copy = imutils.rotate(frame_copy,270)
             lane_coordinates = self.get_lines_coordinates(self.get_canny(frame_copy))
@@ -213,5 +213,5 @@ class LaneDetector: #Thread
 
         cv2.destroyAllWindows()
 
-l1 = LaneDetector(2,3)
-l1.run()
+#l1 = LaneDetector(2,3)
+#l1.run()
