@@ -1,9 +1,10 @@
 import numpy as np
 import cv2
+import imutils
 from threading import Thread
 
 
-class LaneDetector(Thread):
+class LaneDetector: #Thread
 
     def __init__(self, inP, outP):
         """
@@ -58,10 +59,10 @@ class LaneDetector(Thread):
         Then -> apply the canny edge detection function on the image
         Last -> apply the mask to the canny image
         """
-        
-        local_canny = cv2.Canny(cv2.GaussianBlur(local_img, (5, 5), 0), 100, 200)
+        gauss = cv2.GaussianBlur(local_img, (5, 5), 0)
+        local_canny = cv2.Canny(gauss, 100, 200)
         local_mask = self.region_of_interest(local_img)
-        #cv2.imshow('test02', local_mask)          # TO BE DELETED!!!!!!!!!!
+        #cv2.imshow('test3', local_mask)          # TO BE DELETED!!!!!!!!!!
         #return cv2.bitwise_and(local_canny, local_mask)  # apply the mask to the canny image
         return local_canny   # when the camera is straiight down
     def make_coordinates(self, local_line, im_shape):
@@ -140,37 +141,77 @@ class LaneDetector(Thread):
 
         if right_lane is not None:
             l = right_lane
-            cv2.line(auxiliary_img, (l[0], l[1]), (l[2], l[3]), (255, 255, 255), 20)
+            try:
+                cv2.line(auxiliary_img, (l[0], l[1]), (l[2], l[3]), (255, 255, 255), 20)
+            except OverflowError:
+                print("OverflowError Right")
 
         if left_lane is not None:
             l = left_lane
-            cv2.line(auxiliary_img, (l[0], l[1]), (l[2], l[3]), (255, 255, 255), 20)
+            try:
+                cv2.line(auxiliary_img, (l[0], l[1]), (l[2], l[3]), (255, 255, 255), 20)
+            except OverflowError:
+                print("OverflowError Left")
 
         return cv2.addWeighted(local_img, 0.6, auxiliary_img, 1, 1)
+
+    def if_horizontal(self, local_img):
+        x,y,_ = local_img.shape
+        local_img = local_img[x-700:x-200,:]
+        gray = cv2.cvtColor(local_img,cv2.COLOR_BGR2GRAY)
+        gray = cv2.bitwise_not(gray)
+        bw = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C,  cv2.THRESH_BINARY, 15, -2)
+        horizontal = np.copy(bw)
+        cols = horizontal.shape[1]
+        horizontal_size = cols // 7
+        horizontalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (horizontal_size, 5))
+        horizontal = cv2.erode(horizontal, horizontalStructure)
+        horizontal = cv2.dilate(horizontal, horizontalStructure)
+        contours, hier = cv2.findContours(horizontal,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+        for cnt in contours:
+            if 200<cv2.contourArea(cnt)<5000:
+                rect = cv2.minAreaRect(cnt)
+                box = cv2.boxPoints(rect)
+                box = np.int0(box)
+                cv2.drawContours(local_img,[cnt],0,(0,255,0),2)
+                #cv2.drawContours(horizontal,[cnt],0,255,-1)
+                cv2.putText(local_img, "HORIZONTAL LINE", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+                return True
+            else:
+                cv2.putText(local_img, "NO HORIZONTAL LINE", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+                return False
+
+
 
     def run(self):
         """
 
         """
-        # cap = cv2.VideoCapture('D:\\Cristi\\BoschFutureMobility\\Records\\picam19-02-14-07-08.mp4')  #TO BE DELETED!!!
+        cap = cv2.VideoCapture('/home/mgrrr/Documents/dataset/Records/Set1/w5.mp4')  #TO BE DELETED!!!
 
-        # frame = cv2.imread('D:\\Cristi\\BoschFutureMobility\\Records\\testCurba4.png')
+        #frame_copy = cv2.imread('D:\\Cristi\\BoschFutureMobility\\Records\\testCurba4.png')
 
         while True:
-            data = self.inP.recv()
-            frame_copy = data[1]
+            #data = self.inP.recv()
+            # frame_copy = data[1]
+            _, frame_copy = cap.read()
+            frame_copy = imutils.rotate(frame_copy,270)
             lane_coordinates = self.get_lines_coordinates(self.get_canny(frame_copy))
+            hline = self.if_horizontal(frame_copy)
+
+
             
             #print('LaneDetector, lane_coord: ' + str(lane_coordinates)) #TO BE DELETED
-            self.outP.send((lane_coordinates, frame_copy.shape))
+            #self.outP.send((lane_coordinates, frame_copy.shape))
             
-            cv2.imshow('test1', frame_copy)
-            #display_lane = self.display_lines(frame_copy, lane_coordinates)
-            #cv2.imshow('test2', display_lane)
+            #cv2.imshow('test1', frame_copy)
+            display_lane = self.display_lines(frame_copy, lane_coordinates)
+            cv2.imshow('test2', display_lane)
 
             if cv2.waitKey(1) == 27:
                 break
 
         cv2.destroyAllWindows()
 
-
+l1 = LaneDetector(2,3)
+l1.run()
