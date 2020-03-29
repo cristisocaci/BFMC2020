@@ -30,13 +30,13 @@ class StopSignDetector(Thread):
 
         self.params = cv.SimpleBlobDetector_Params()
 
-        self.params.minDistBetweenBlobs = 20
+        self.params.minDistBetweenBlobs = 25
         self.params.minThreshold = 0
         self.params.maxThreshold = 256
 
         self.params.filterByArea = True
-        self.params.minArea = 900
-        self.params.maxArea = 15000
+        self.params.minArea = 300
+        self.params.maxArea = 3500
 
         self.params.filterByCircularity = False
         self.params.filterByConvexity = False
@@ -79,19 +79,19 @@ class StopSignDetector(Thread):
         imgHSV = cv.cvtColor(img, cv.COLOR_BGR2HSV)
         imgHSV = cv.GaussianBlur(imgHSV, (5, 5), 0)
         # Range for lower RED
-        lower_red = np.array([0, 80, 70])
+        lower_red = np.array([0, 90, 25])
         upper_red = np.array([5, 255, 255])
         mask1 = cv.inRange(imgHSV, lower_red, upper_red)
         # Range for upper range
-        lower_red = np.array([160, 80, 70])
+        lower_red = np.array([155, 90, 25])
         upper_red = np.array([180, 255, 255])
         mask2 = cv.inRange(imgHSV, lower_red, upper_red)
         # Red mask
         red_det = mask1 + mask2
         # Yellow mask
-        yellow_det = cv.inRange(imgHSV, (15, 80, 70), (30, 255, 255))
+        yellow_det = cv.inRange(imgHSV, (15, 60, 25), (30, 255, 255))
         # Blue mask
-        blue_det = cv.inRange(imgHSV, (100, 60, 40), (140, 250, 250))
+        blue_det = cv.inRange(imgHSV, (95, 100, 25), (140, 250, 250))
 
         finalMask = red_det + yellow_det + blue_det
 
@@ -115,23 +115,20 @@ class StopSignDetector(Thread):
 
         #cv.imshow("finalImage", finalImage)
 
-
-        finalMask = cv.morphologyEx(finalMask, cv.MORPH_OPEN, (5, 5))
-
         return (keypoints_all)
     #===================================================================================
-    #====================================================================================
+    #===================================================================================
     def detectSign(self, img, watch, centers):
         for points in centers:
-            x1 = int(points.pt[0]) - 64
-            y1 = int(points.pt[1]) - 64
-            x2 = int(points.pt[0]) + 64
-            y2 = int(points.pt[1]) + 64
+            x1 = int(points.pt[0]) - 35
+            y1 = int(points.pt[1]) - 35
+            x2 = int(points.pt[0]) + 35
+            y2 = int(points.pt[1]) + 35
 
             #This is a bit rough. Through trial and error I figured that there's a chance the ROI is just a bit below/above the
             #correct position, so I make 2 other ROI's, once 16 pixels below and one 16 pixels above. So we check 3 times for each
             #detected countour center.
-            for disp in (0, 10):
+            for disp in (0, 4):
                 if (not self.withinBoundsX(x1, img) or  not self.withinBoundsY(y1+disp, img) or not self.withinBoundsX(x2, img) or not self.withinBoundsY(y2+disp, img)):
                     break
                 #The window to check using the HOG.
@@ -144,22 +141,25 @@ class StopSignDetector(Thread):
                 pca_values = self.pca.transform(descriptor)
                 #If the SVM gives a positive response (i.e. it is a sign) we show the image and draw a rectangle around the sign
                 #we further process it with the classifier.
-                if self.clf02.predict(pca_values) == 1:
+                if self.clf02.predict(pca_values) ==
+                    '''
+                    Succesive detections imeplemented on the receiving end, maybe?
+                    '''
                     if(self.clf.predict(descriptor) == 1):
                         self.outP.send(1)
-                        cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (255, 0, 0), 2)
+                        #cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (255, 0, 0), 2)
 
                     elif (self.clf.predict(descriptor) == 2):
                         self.outP.send(2)
-                        cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (255, 255, 255), 2)
+                        #cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (255, 255, 255), 2)
 
                     elif (self.clf.predict(descriptor) == 3):
                         self.outP.send(3)
-                        cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (0, 255, 0), 2)
+                        #cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (0, 255, 0), 2)
 
                     elif (self.clf.predict(descriptor) == 4):
                         self.outP.send(4)
-                        cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (0, 0, 255), 2)
+                        #cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (0, 0, 255), 2)
 
 
     #====================================================================================
@@ -167,14 +167,19 @@ class StopSignDetector(Thread):
     def run(self):
 
         while True:
-
+            '''
+            victim - the image I actually do the processing on
+            watch - this is where I draw the rectangles and whatnot so it can be tested in practice
+            centers - the centers of the regions of interest
+            '''
             watch = self.inP.recv()
             # A dirty drick, unsure if still necessary, but I will leave it here.
-            watch = cv.copyMakeBorder(watch, 0, 0, 0, 128, cv.BORDER_REPLICATE)
+            victim = watch[0:(int)(watch.shape[0]/2), (int)(watch.shape[1]/2):watch.shape[1]]
+            victim = cv.copyMakeBorder(victim, 0, 0, 0, 32, cv.BORDER_REPLICATE)
             # Get the centers.
             centers = self.detectColorAndCenters(watch)
             # Detect and classify the signs.
-            self.detectSign(watch, watch, centers)
+            self.detectSign(victim, watch, centers)
 
             if cv.waitKey(1) == 27:
                 break
