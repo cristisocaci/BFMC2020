@@ -141,7 +141,7 @@ class StopSignDetector(Thread):
                 pca_values = self.pca.transform(descriptor)
                 #If the SVM gives a positive response (i.e. it is a sign) we show the image and draw a rectangle around the sign
                 #we further process it with the classifier.
-                if self.clf02.predict(pca_values) ==
+                if self.clf02.predict(pca_values) == 1:
                     '''
                     Succesive detections imeplemented on the receiving end, maybe?
                     '''
