@@ -4,7 +4,7 @@ import time
 from threading import Thread
 
 
-class LaneDetector: #Thread
+class LaneDetector(Thread):
 
     def __init__(self, inP, outP):
         """
@@ -107,9 +107,9 @@ class LaneDetector: #Thread
         return cv2.addWeighted(local_img, 0.6, auxiliary_img, 1, 1)
 
     def if_horizontal(self, local_img):
-        x,y,_ = local_img.shape
+        x,y = local_img.shape
         local_img = local_img[x-700:x-200,y-1200:y-200]
-        gray = cv2.cvtColor(local_img,cv2.COLOR_BGR2GRAY)
+        gray = local_img # cv2.cvtColor(local_img,cv2.COLOR_BGR2GRAY)
         gray = cv2.bitwise_not(gray)
         bw = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C,  cv2.THRESH_BINARY, 15, -2)
         horizontal = np.copy(bw)
@@ -118,7 +118,7 @@ class LaneDetector: #Thread
         horizontalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (horizontal_size, 5))
         horizontal = cv2.erode(horizontal, horizontalStructure)
         horizontal = cv2.dilate(horizontal, horizontalStructure)
-        contours, hier = cv2.findContours(horizontal,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+        _, contours, hier = cv2.findContours(horizontal,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
         for cnt in contours:
             if 200<cv2.contourArea(cnt)<5000:
                 rect = cv2.minAreaRect(cnt)
@@ -148,20 +148,20 @@ class LaneDetector: #Thread
         """
 
         """
-        cap = cv2.VideoCapture('/home/mgrrr/Documents/dataset/Records/Set1/10.h264')  #TO BE DELETED!!!
+        #cap = cv2.VideoCapture('/home/mgrrr/Documents/dataset/Records/Set1/10.h264')  #TO BE DELETED!!!
 
         #frame_copy = cv2.imread('D:\\Cristi\\BoschFutureMobility\\Records\\testCurba4.png')
         ts = [0, 0 , False]
         elapsed = 0
         
         while True:
-            #data = self.inP.recv()
-            # frame_copy = data[1]
+            data = self.inP.recv()
+            frame_copy = data[1]
             hor_line = False
             elapsed = 0
-            _, frame_copy = cap.read()
+            #_, frame_copy = cap.read()
             #frame_copy = imutils.rotate(frame_copy,270)
-            x,y,_ = frame_copy.shape
+            x,y = frame_copy.shape
             hline = self.if_horizontal(frame_copy)
             mview = frame_copy[x-700:x-200, y-1200:y-200]
             x = int(x * 50/100) 
@@ -169,6 +169,7 @@ class LaneDetector: #Thread
             dim = (x,y)
             frame_copy = cv2.resize(frame_copy, dim, interpolation = cv2.INTER_AREA)
             lane_coordinates = self.get_lines_coordinates(frame_copy)
+            self.outP.send((lane_coordinates, frame_copy.shape))
             display_lane = self.display_lines(frame_copy, lane_coordinates)
             #hline = self.if_horizontal(frame)
             if hline == True and ts[2] == False:
@@ -187,18 +188,17 @@ class LaneDetector: #Thread
                 elapsed = 0
                 hor_line = True
             #print('LaneDetector, lane_coord: ' + str(lane_coordinates)) #TO BE DELETED
-            #self.outP.send((lane_coordinates, frame_copy.shape))
             # x,y,_ = frame_copy.shape
             # mview = frame[x-700:x-200, y-1200:y-200]
             #cv2.imshow('test1', frame_copy)
             #display_lane = self.display_lines(frame_copy, lane_coordinates)
-            cv2.imshow('test2', display_lane)
-            cv2.imshow("testM", mview)
+            #cv2.imshow('test2', display_lane)
+            #cv2.imshow("testM", mview)
 
             if cv2.waitKey(1) == 27:
                 break
 
         cv2.destroyAllWindows()
 
-l1 = LaneDetector(2,3)
-l1.run()
+#l1 = LaneDetector(2,3)
+#l1.run()

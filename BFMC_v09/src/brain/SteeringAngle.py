@@ -83,6 +83,7 @@ class SteeringAngle(ThreadWithStop):
             self.distFromRight = None
             self.distFromLeft = None
             self.lines = 0
+            return self.steering_angle
 
         return int(math.atan(x_offset / y_offset) * 180.0 / math.pi)
 

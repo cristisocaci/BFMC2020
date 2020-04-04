@@ -3,6 +3,7 @@ from threading import Thread
 import cv2 as cv
 import joblib
 import numpy as np
+import sklearn
 
 
 class SignDetector(Thread):
@@ -48,9 +49,9 @@ class SignDetector(Thread):
         # As is this.
         self.detector = cv.SimpleBlobDetector_create(self.params)
         # And these three.
-        self.pca = joblib.load("PCA.joblib")
-        self.clf = joblib.load("LDA.joblib")
-        self.clf02 = joblib.load("classifierSVM.joblib")
+        self.clf02 = joblib.load("src/data/classifierSVM.joblib")
+        self.clf = joblib.load("src/data/LDA.joblib")
+        self.pca = joblib.load("src/data/pca.joblib")    
 
     #====================================================================
     def withinBoundsX(self, coord, img):
@@ -96,8 +97,8 @@ class SignDetector(Thread):
         # Blue mask
         blue_det = cv.inRange(imgHSV, (95, 100, 25), (140, 250, 250))
 
-        finalMask = red_det + yellow_det + blue_det
-
+        #finalMask = red_det + yellow_det + blue_det
+        
         #==============================================================================
         #==============================================================================
 
@@ -105,13 +106,14 @@ class SignDetector(Thread):
         keypoints_yellow = self.detector.detect(yellow_det)
         keypoints_blue = self.detector.detect(blue_det)
 
-        '''red_image = cv.drawKeypoints(red_det, keypoints_red, np.array([]), (0, 0, 255),
+        red_image = cv.drawKeypoints(red_det, keypoints_red, np.array([]), (0, 0, 255),
                                      cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
         yellow_image = cv.drawKeypoints(yellow_det, keypoints_yellow, np.array([]), (0, 255, 0),
                                      cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
         blue_image = cv.drawKeypoints(blue_det, keypoints_blue, np.array([]), (255, 0, 0),
-                                     cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)'''
-        #finalImage = red_image + yellow_image + blue_image
+                                     cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+        finalImage = red_image + yellow_image + blue_image
+        cv.imshow("watch", finalImage)
         keypoints_all = keypoints_red + keypoints_yellow + keypoints_blue
 
 
@@ -149,19 +151,20 @@ class SignDetector(Thread):
                     '''
                     if(self.clf.predict(descriptor) == 1):
                         self.outP.send(1)
-                        #cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (255, 0, 0), 2)
+                        cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (255, 0, 0), 2)
 
                     elif (self.clf.predict(descriptor) == 2):
                         self.outP.send(2)
-                        #cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (255, 255, 255), 2)
+                        cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (255, 255, 255), 2)
 
                     elif (self.clf.predict(descriptor) == 3):
                         self.outP.send(3)
-                        #cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (0, 255, 0), 2)
+                        cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (0, 255, 0), 2)
 
                     elif (self.clf.predict(descriptor) == 4):
                         self.outP.send(4)
-                        #cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (0, 0, 255), 2)
+                        cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (0, 0, 255), 2)
+                   
                 else:
                     self.outP.send(0)
 
@@ -175,6 +178,7 @@ class SignDetector(Thread):
             watch - this is where I draw the rectangles and whatnot so it can be tested in practice
             centers - the centers of the regions of interest
             '''
+            
             watch = (self.inP.recv())[1]
             # A dirty drick, unsure if still necessary, but I will leave it here.
             victim = watch[0:(int)(watch.shape[0]/2), (int)(watch.shape[1]/2):watch.shape[1]]
@@ -183,10 +187,11 @@ class SignDetector(Thread):
             centers = self.detectColorAndCenters(watch)
             # Detect and classify the signs.
             self.detectSign(victim, watch, centers)
-
+            #cv.imshow("watch", watch)
+            
             if cv.waitKey(1) == 27:
                 break
-
+            
         cv.destroyAllWindows()
 
 

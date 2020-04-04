@@ -2,7 +2,7 @@ from src.utils.templates.workerprocess      import WorkerProcess
 from src.brain.SteeringAngle                import SteeringAngle
 from src.brain.controllerThread             import Controller
 from src.brain.messageReceiver              import MessageReceiver
-from src.brain.positionThread               import PositionThread
+#from src.brain.positionThread               import PositionThread
 from queue import Queue
 
 

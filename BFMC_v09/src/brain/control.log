@@ -1,569 +1,358 @@
-Control: steering angle: 2
-Control: lines: 2, dist right: 375, dist left: 332
+Control: steering angle: 0
+Control: lines: 0, dist right: None, dist left: None
 Control: steering angle: 3
-Control: lines: 2, dist right: 368, dist left: 326
+Control: lines: 11, dist right: None, dist left: 301.1265285671399
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 3.0}
 Control: steering angle: 3
-Control: lines: 2, dist right: 372, dist left: 327
+Control: lines: 0, dist right: None, dist left: None
 Control: steering angle: 3
-Control: lines: 2, dist right: 368, dist left: 327
-Control: steering angle: 4
-Control: lines: 2, dist right: 378, dist left: 320
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
-Control: steering angle: 3
-Control: lines: 2, dist right: 369, dist left: 325
-Control: steering angle: 3
-Control: lines: 2, dist right: 369, dist left: 326
-Control: steering angle: 3
-Control: lines: 2, dist right: 361, dist left: 323
-Control: steering angle: 4
-Control: lines: 2, dist right: 373, dist left: 319
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
-Control: steering angle: 3
-Control: lines: 2, dist right: 367, dist left: 326
-Control: steering angle: 3
-Control: lines: 2, dist right: 370, dist left: 330
-Control: steering angle: 4
-Control: lines: 2, dist right: 372, dist left: 322
-Control: steering angle: 4
-Control: lines: 2, dist right: 373, dist left: 317
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
-Control: steering angle: 3
-Control: lines: 2, dist right: 374, dist left: 325
-Control: steering angle: 3
-Control: lines: 2, dist right: 371, dist left: 321
-Control: steering angle: 3
-Control: lines: 2, dist right: 374, dist left: 324
-Control: steering angle: 4
-Control: lines: 2, dist right: 377, dist left: 328
-Control: steering angle: 3
-Control: lines: 2, dist right: 367, dist left: 320
-Control: steering angle: 3
-Control: lines: 2, dist right: 367, dist left: 321
-Control: steering angle: 3
-Control: lines: 2, dist right: 364, dist left: 320
-Control: steering angle: 3
-Control: lines: 2, dist right: 361, dist left: 313
-Control: steering angle: 3
-Control: lines: 2, dist right: 359, dist left: 310
-Control: steering angle: 3
-Control: lines: 2, dist right: 363, dist left: 318
-Control: steering angle: 4
-Control: lines: 2, dist right: 366, dist left: 311
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
+Control: lines: 0, dist right: None, dist left: None
 Control: steering angle: 6
-Control: lines: 2, dist right: 400, dist left: 313
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
+Control: lines: 11, dist right: None, dist left: 154.38398912449864
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 6.0}
+Control: steering angle: 9
+Control: lines: 11, dist right: None, dist left: 151.88369265816104
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 9.0}
+Control: steering angle: 12
+Control: lines: 11, dist right: None, dist left: 198.85849958703548
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 12.0}
+Control: steering angle: 15
+Control: lines: 11, dist right: None, dist left: 305.78274710535874
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 15.0}
+Control: steering angle: 18
+Control: lines: 11, dist right: None, dist left: 233.50742655823666
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 18.0}
+Control: steering angle: 19.5
+Control: lines: 11, dist right: None, dist left: 225.79071375576578
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 19.5}
+Control: steering angle: 19.5
+Control: lines: 11, dist right: None, dist left: 312.8525133700402
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 19.5}
+Control: steering angle: 19.5
+Control: lines: 11, dist right: None, dist left: 159.10038818044347
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 19.5}
+Control: steering angle: 19.5
+Control: lines: 11, dist right: None, dist left: 223.17457021035872
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 19.5}
+Control: steering angle: 19.5
+Control: lines: 11, dist right: None, dist left: 205.96686132999184
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 19.5}
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 11, dist right: None, dist left: 285.2008575201601
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 19.5}
+Control: steering angle: 19.5
+Control: lines: 11, dist right: None, dist left: 240.70159953568663
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 19.5}
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 11, dist right: None, dist left: 165.49321981735457
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 19.5}
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 11, dist right: None, dist left: 165.00518670695513
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 19.5}
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 11, dist right: None, dist left: 166.74024290743696
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 19.5}
+Control: steering angle: 19.5
+Control: lines: 11, dist right: None, dist left: 173.77834010827291
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 19.5}
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Bakcward: {'action': 'MCTL', 'speed': -0.18, 'steerAngle': 0.0}
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Bakcward: {'action': 'MCTL', 'speed': -0.18, 'steerAngle': 0.0}
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 19.5
+Control: lines: 0, dist right: None, dist left: None
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Bakcward: {'action': 'MCTL', 'speed': -0.18, 'steerAngle': 0.0}
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Control: steering angle: 16
+Control: lines: 10, dist right: 31.99609446511025, dist left: None
+TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 16.0}
+Control: steering angle: 16
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 16
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 13
+Control: lines: 10, dist right: 35.99011637642859, dist left: None
+TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 13.0}
+Control: steering angle: 13
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 13
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 13
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 13
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 13
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 13
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 13
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 13
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 13
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 10
+Control: lines: 10, dist right: 38.99524012935312, dist left: None
+TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 10.0}
+Control: steering angle: 10
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: 7
+Control: lines: 10, dist right: 42.98819456073414, dist left: None
+TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 7.0}
 Control: steering angle: 4
-Control: lines: 2, dist right: 375, dist left: 316
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
+Control: lines: 10, dist right: 47.99414169766538, dist left: None
+TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 4.0}
 Control: steering angle: 4
-Control: lines: 2, dist right: 380, dist left: 320
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
-Control: steering angle: 5
-Control: lines: 2, dist right: 410, dist left: 325
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
-Control: steering angle: 5
-Control: lines: 2, dist right: 419, dist left: 328
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
-Control: steering angle: 5
-Control: lines: 2, dist right: 431, dist left: 333
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
-Control: steering angle: 3
-Control: lines: 2, dist right: 397, dist left: 337
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
+Control: lines: 0, dist right: None, dist left: None
 Control: steering angle: 4
-Control: lines: 2, dist right: 423, dist left: 340
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
-Control: steering angle: 4
-Control: lines: 2, dist right: 430, dist left: 342
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
-Control: steering angle: 3
-Control: lines: 2, dist right: 439, dist left: 348
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
+Control: lines: 0, dist right: None, dist left: None
 Control: steering angle: 1
-Control: lines: 2, dist right: 419, dist left: 358
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': 0.5}
+Control: lines: 10, dist right: 102.78415093610201, dist left: None
+TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': 1.0}
 Control: steering angle: -2
-Control: lines: 10, dist right: 326.1134665931896, dist left: None
+Control: lines: 10, dist right: 100.89482001511452, dist left: None
 TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -2.0}
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Bakcward: {'action': 'MCTL', 'speed': -0.18, 'steerAngle': 0.0}
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Bakcward: {'action': 'MCTL', 'speed': -0.18, 'steerAngle': 0.0}
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Bakcward: {'action': 'MCTL', 'speed': -0.18, 'steerAngle': 0.0}
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -2
+Control: lines: 0, dist right: None, dist left: None
 Control: steering angle: -5
-Control: lines: 10, dist right: 312.92869911803757, dist left: None
+Control: lines: 10, dist right: 77.86946849246267, dist left: None
 TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -5.0}
-Control: steering angle: -8
-Control: lines: 10, dist right: 315.2202051639043, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -8.0}
-Control: steering angle: -11
-Control: lines: 10, dist right: 305.71593611801654, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -11.0}
-Control: steering angle: -14
-Control: lines: 10, dist right: 293.0960962936476, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -14.0}
-Control: steering angle: -17
-Control: lines: 10, dist right: 273.7208430051968, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -17.0}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 262.7316776223025, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 271.27985526376943, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 270.5591851617933, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 257.766676907557, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 259.9475321673472, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 260.0182301980633, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 272.84691434839186, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 274.28820217184693, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 281.60136079807285, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 252.02238148958384, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 258.2561702655901, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 255.27088682126552, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 259.00690374295283, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 250.69652180467625, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 248.19448019647817, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 253.49878870820828, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 252.62052036873584, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 247.0746366394757, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 255.3463870822792, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 254.93220623777555, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 243.80411495040588, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 249.82140102947005, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 243.4566757893895, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 241.35186303040342, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 247.87806563194465, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 246.48939299535115, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 238.73857382836556, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 234.97035345470945, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 238.15735717578997, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 239.61601255364093, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 238.20740041938518, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 239.00209204105306, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 241.83051916579925, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 229.95574225293217, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 239.81493255251664, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 229.71571639189008, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 227.5731414720912, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 227.54108006965703, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 222.99524867708766, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 222.76666754360002, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 217.01548388339938, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 217.6315286279137, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 211.73350554205518, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 210.81504148673096, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 199.92406820912686, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 218.63133898259213, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 201.85884691376518, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 224.05806437358078, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 222.64790984895188, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 195.0082986684864, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 188.94055540043956, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 213.78095774784603, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 187.6761254394124, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 175.36248173426378, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 167.94716035594627, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 168.25541629904365, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 167.53518537506724, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 169.18551560295754, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 163.43751145277233, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 156.97770542341354, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 154.73419147768922, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 141.88538889070688, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 144.10777132354815, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 136.77838348302762, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 143.361300335152, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 145.55560595252672, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 136.7276849723549, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 138.53937244448886, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 134.1702629188187, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 129.36756103619064, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 126.55149565510226, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 129.36756103619064, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 129.27609335908738, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 106.86494381815123, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 108.99858855825752, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 114.82029046413123, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 114.27060556756715, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 124.12774243492947, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 116.76697013566897, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 120.96567039870298, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 119.84746012814402, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 112.54552804483671, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 108.55513597604465, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -18
-Control: lines: 10, dist right: 102.64439532061853, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -18.0}
-Control: steering angle: -18
-Control: lines: 10, dist right: 116.67976184618033, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -18.0}
-Control: steering angle: -17
-Control: lines: 10, dist right: 116.80420273869406, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -17.0}
-Control: steering angle: -17
-Control: lines: 10, dist right: 112.727003590579, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -17.0}
-Control: steering angle: -16
-Control: lines: 10, dist right: 111.81497321599696, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -16.0}
-Control: steering angle: -16
-Control: lines: 10, dist right: 112.47117074871261, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -16.0}
-Control: steering angle: -16
-Control: lines: 10, dist right: 120.46737721990591, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -16.0}
-Control: steering angle: -15
-Control: lines: 10, dist right: 112.6153846153846, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -15.0}
-Control: steering angle: -15
-Control: lines: 10, dist right: 119.77734092458272, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -15.0}
-Control: steering angle: -15
-Control: lines: 10, dist right: 122.76923076923079, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -15.0}
-Control: steering angle: -14
-Control: lines: 10, dist right: 120.65858117641922, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -14.0}
-Control: steering angle: -13
-Control: lines: 10, dist right: 114.61989752202277, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -13.0}
-Control: steering angle: -13
-Control: lines: 10, dist right: 119.71365759547334, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -13.0}
-Control: steering angle: -13
-Control: lines: 10, dist right: 135.28905937025638, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -13.0}
-Control: steering angle: -15
-Control: lines: 2, dist right: 120, dist left: 506
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -12
-Control: lines: 10, dist right: 110.17930446962052, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -12.0}
-Control: steering angle: -14
-Control: lines: 2, dist right: 125, dist left: 495
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -16
-Control: lines: 2, dist right: 196, dist left: 495
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -18
-Control: lines: 2, dist right: 191, dist left: 486
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -19.5
-Control: lines: 2, dist right: 186, dist left: 473
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -19.5
-Control: lines: 2, dist right: 187, dist left: 468
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -19
-Control: lines: 2, dist right: 196, dist left: 465
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -19
-Control: lines: 2, dist right: 172, dist left: 462
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -19
-Control: lines: 2, dist right: 187, dist left: 467
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -16
-Control: lines: 10, dist right: 225.65534189394373, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -16.0}
-Control: steering angle: -14
-Control: lines: 10, dist right: 224.08339375017638, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -14.0}
-Control: steering angle: -14
-Control: lines: 10, dist right: 236.07300216751906, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -14.0}
-Control: steering angle: -17
-Control: lines: 10, dist right: 258.8547145031244, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -17.0}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 281.6814320019335, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -16
-Control: lines: 10, dist right: 246.84122967529535, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -16.0}
-Control: steering angle: -19
-Control: lines: 10, dist right: 295.54883457340657, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.0}
-Control: steering angle: -17
-Control: lines: 2, dist right: 321, dist left: 349
-Control: steering angle: -15
-Control: lines: 2, dist right: 326, dist left: 343
-Control: steering angle: -13
-Control: lines: 2, dist right: 344, dist left: 333
-Control: steering angle: -16
-Control: lines: 10, dist right: 306.5079463152135, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -16.0}
-Control: steering angle: -14
-Control: lines: 2, dist right: 417, dist left: 323
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -12
-Control: lines: 2, dist right: 447, dist left: 324
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -10
-Control: lines: 2, dist right: 462, dist left: 317
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -8
-Control: lines: 2, dist right: 470, dist left: 290
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -11
-Control: lines: 10, dist right: 341.42341153755984, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -11.0}
-Control: steering angle: -9
-Control: lines: 2, dist right: 509, dist left: 372
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -7
-Control: lines: 2, dist right: 572, dist left: 323
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
 Control: steering angle: -5
-Control: lines: 2, dist right: 517, dist left: 344
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
+Control: lines: 0, dist right: None, dist left: None
 Control: steering angle: -8
-Control: lines: 10, dist right: 329.5982014195979, dist left: None
+Control: lines: 10, dist right: 83.13225890779651, dist left: None
 TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -8.0}
 Control: steering angle: -11
-Control: lines: 10, dist right: 320.8715687954538, dist left: None
+Control: lines: 10, dist right: 81.28255592914644, dist left: None
 TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -11.0}
+Control: steering angle: -11
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -11
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -11
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -11
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 10, dist right: 33.998962449838785, dist left: None
+TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -8.0}
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Bakcward: {'action': 'MCTL', 'speed': -0.18, 'steerAngle': 0.0}
+Backward: {'action': 'BRAK', 'steerAngle': 0.0}
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -8
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -11
+Control: lines: 10, dist right: 83.60837486933966, dist left: None
+TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -11.0}
+Control: steering angle: -11
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -11
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -11
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -11
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -11
+Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -11
+Control: lines: 0, dist right: None, dist left: None
 Control: steering angle: -14
-Control: lines: 10, dist right: 309.3331817893535, dist left: None
+Control: lines: 10, dist right: 78.0957347680645, dist left: None
 TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -14.0}
-Control: steering angle: -17
-Control: lines: 10, dist right: 292.84983260250203, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -17.0}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 278.6000717874997, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 276.34585468211196, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 271.47247665036764, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 262.3366158202091, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 258.33391546831035, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 258.43141094834544, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 259.10793296653486, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 251.747986927335, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 251.01414223071612, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 2, dist right: 346, dist left: 747
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -19.5
-Control: lines: 2, dist right: 376, dist left: 725
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -19.5
-Control: lines: 2, dist right: 356, dist left: 704
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -19.5
-Control: lines: 2, dist right: 357, dist left: 670
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 239.1277837486412, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 221.61018502070834, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19
-Control: lines: 2, dist right: 280, dist left: 613
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -19
-Control: lines: 2, dist right: 255, dist left: 557
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 179.13801133359874, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 164.99943832113544, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 165.42983952958332, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -19.5
-Control: lines: 10, dist right: 130.55260259125862, dist left: None
-TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
-Control: steering angle: -17
-Control: lines: 0, dist right: None, dist left: None
 Control: steering angle: -14
-Control: lines: 2, dist right: 190, dist left: 320
-Forward: {'action': 'MCTL', 'speed': 0.18, 'steerAngle': -0.5}
-Control: steering angle: -17
 Control: lines: 0, dist right: None, dist left: None
 Control: steering angle: -14
 Control: lines: 0, dist right: None, dist left: None
-Control: steering angle: -17
+Control: steering angle: -14
 Control: lines: 0, dist right: None, dist left: None
 Control: steering angle: -14
 Control: lines: 0, dist right: None, dist left: None
 Control: steering angle: -11
+Control: lines: 11, dist right: None, dist left: 92.88099525461237
+TurnRight: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -11.0}
+Control: steering angle: -14
+Control: lines: 10, dist right: 75.98661406617208, dist left: None
+TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -14.0}
+Control: steering angle: -14
 Control: lines: 0, dist right: None, dist left: None
+Control: steering angle: -17
+Control: lines: 10, dist right: 304.30245154466127, dist left: None
+TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -17.0}
+Control: steering angle: -19.5
+Control: lines: 10, dist right: 303.6574970034188, dist left: None
+TurnLeft: {'action': 'MCTL', 'speed': 0.16, 'steerAngle': -19.5}
 Stop: {'action': 'BRAK', 'steerAngle': 0.0}
