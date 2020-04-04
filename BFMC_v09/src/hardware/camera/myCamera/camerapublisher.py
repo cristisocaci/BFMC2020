@@ -10,12 +10,14 @@ class CameraPublisher(ThreadWithStop):
         self.outP = outP
         
     def run(self):
-        cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture('/home/pi/Desktop/Exam_VER.h264')
         while self._running:
             _, frame = cap.read()
+            frame = cv2.resize(frame, (640, 480))
             stamp = time.time()
+            self.outP[1].send([[stamp], frame])
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            self.outP.send([[stamp], frame])
+            self.outP[0].send([[stamp], frame])
         cap.release()
             
             

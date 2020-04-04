@@ -34,7 +34,7 @@ class SignDetector(Thread):
                                 self.L2HysThreshold, self.gammaCorrection, self.nlevels, self.signedGradients)
 
         self.params = cv.SimpleBlobDetector_Params()
-        self.params.minDistBetweenBlobs = 25
+        self.params.minDistBetweenBlobs = 35
         self.params.minThreshold = 0
         self.params.maxThreshold = 256
 
@@ -113,7 +113,7 @@ class SignDetector(Thread):
         blue_image = cv.drawKeypoints(blue_det, keypoints_blue, np.array([]), (255, 0, 0),
                                      cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
         finalImage = red_image + yellow_image + blue_image
-        cv.imshow("watch", finalImage)
+        #cv.imshow("watch1", finalImage)
         keypoints_all = keypoints_red + keypoints_yellow + keypoints_blue
 
 
@@ -164,6 +164,7 @@ class SignDetector(Thread):
                     elif (self.clf.predict(descriptor) == 4):
                         self.outP.send(4)
                         cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (0, 0, 255), 2)
+                    print("O intrat")
                    
                 else:
                     self.outP.send(0)
@@ -181,13 +182,14 @@ class SignDetector(Thread):
             
             watch = (self.inP.recv())[1]
             # A dirty drick, unsure if still necessary, but I will leave it here.
-            victim = watch[0:(int)(watch.shape[0]/2), (int)(watch.shape[1]/2):watch.shape[1]]
+             victim = watch[0:(int)(watch.shape[0]/2), (int)(watch.shape[1]/2):watch.shape[1]]
             victim = cv.copyMakeBorder(victim, 0, 0, 0, 32, cv.BORDER_REPLICATE)
             # Get the centers.
             centers = self.detectColorAndCenters(watch)
             # Detect and classify the signs.
             self.detectSign(victim, watch, centers)
-            #cv.imshow("watch", watch)
+            cv.imshow("watch", watch)
+            #self.outP.send(0)
             
             if cv.waitKey(1) == 27:
                 break
