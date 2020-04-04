@@ -1,4 +1,3 @@
-from threading import Thread
 from src.utils.templates.threadwithstop import ThreadWithStop
 import logging
 from time import sleep
@@ -10,7 +9,7 @@ class Controller(ThreadWithStop):
         Args:
             inQs[0]: input from steering angle thread ( gives a steering angle )
             outP: sends commands to serial handler
-            inPs[0]: from sign detection  -- inactive
+            inPs[0]: from sign detection
 
         """
         super(Controller, self).__init__()
@@ -94,7 +93,7 @@ class Controller(ThreadWithStop):
             steer_ang, lines, dist_from_right, dist_from_left = self.inQs[0].get()
             self.logger.debug('Control: steering angle: ' + str(steer_ang))
             self.logger.debug('Control: lines: ' + str(lines) + ', dist right: ' + str(dist_from_right) + ', dist left: ' + str(dist_from_left))
-            sign = 0  # self.inPs[0].recv()
+            sign = self.inPs[0].recv()
             # stop = 1; prioritate = 2; parcare = 3; trecere = 4; nimic = 0
 
             if sign == 0:    # it goes normal

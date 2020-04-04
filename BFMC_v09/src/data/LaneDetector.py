@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-import imutils
 import time
 from threading import Thread
 
@@ -96,14 +95,14 @@ class LaneDetector: #Thread
             try:
                 cv2.line(auxiliary_img, (l[0], l[1]), (l[2], l[3]), (255, 255, 255), 20)
             except (OverflowError,TypeError):
-                print("OverflowError Right")
+                pass
 
         if left_lane is not None:
             l = left_lane
             try:
                 cv2.line(auxiliary_img, (l[0], l[1]), (l[2], l[3]), (255, 255, 255), 20)
             except (OverflowError,TypeError):
-                print("OverflowError Left")
+                pass
 
         return cv2.addWeighted(local_img, 0.6, auxiliary_img, 1, 1)
 

@@ -13,7 +13,8 @@ class Brain(WorkerProcess):
             inPs[0]: from LaneDetector
             inPs[1]: from SerialHandler  ---inactiv
             inPs[2]: from gps ---inactiv
-            outPs:list
+            inPs[3]: from SignDetector
+            outPs: to serial handler
         """
         super(Brain, self).__init__(inPs, outPs)
         self.angleQueue = Queue()
@@ -24,7 +25,7 @@ class Brain(WorkerProcess):
         steerAngTh = SteeringAngle(self.inPs[0], [self.angleQueue])
         self.threads.append(steerAngTh)
         
-        controlTh = Controller([self.angleQueue], self.outPs[0], [])
+        controlTh = Controller([self.angleQueue], self.outPs[0], [self.inPs[3]])
         self.threads.append(controlTh)
 
         # posTh = PositionThread([self.inPs[2]], [self.gpsQueue])

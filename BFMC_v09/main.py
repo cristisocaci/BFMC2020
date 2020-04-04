@@ -98,14 +98,16 @@ if enableMyProgram:
     # controlgpsR, gpsS = Pipe(duplex = False)
     serialR, angleS = Pipe(duplex = False)
     # messageR, serialS = Pipe(duplex = False)
-    
-    camProcess = CameraProcess([], [camS])
+    controlSignR, detectSignS = Pipe(duplex=False)
+    detectSignR, camS2 = Pipe(duplex=False)
+
+    camProcess = CameraProcess([], [camS, camS2])
     allProcesses.append(camProcess)
     
-    dataAcqProcess = DataAcquisition([dataR], [dataS])  # , gpsS])
+    dataAcqProcess = DataAcquisition([dataR, detectSignR], [dataS, None, detectSignS])
     allProcesses.append(dataAcqProcess)
     
-    brainProcess = Brain([angleR], [angleS])   # controlgpsR, messageR
+    brainProcess = Brain([angleR, None, None, controlSignR], [angleS])   # controlgpsR, messageR
     allProcesses.append(brainProcess)
     
     shProcess = SerialHandler([serialR], [])  # serialS])

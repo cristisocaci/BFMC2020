@@ -1,16 +1,20 @@
-import numpy as np
-import cv2 as cv
-import joblib
-import sklearn
-from joblib import dump, load
 from threading import Thread
 
-class StopSignDetector(Thread):
+import cv2 as cv
+import joblib
+import numpy as np
+
+
+class SignDetector(Thread):
 
     def __init__(self, inP, outP):
         '''
         :)
         '''
+        super(SignDetector, self).__init__()
+        self.inP = inP
+        self.outP = outP
+
         self.winSize = (40, 40)
         self.blockSize = (10, 10)
         self.blockStride = (5, 5)
@@ -29,7 +33,6 @@ class StopSignDetector(Thread):
                                 self.L2HysThreshold, self.gammaCorrection, self.nlevels, self.signedGradients)
 
         self.params = cv.SimpleBlobDetector_Params()
-
         self.params.minDistBetweenBlobs = 25
         self.params.minThreshold = 0
         self.params.maxThreshold = 256
@@ -116,8 +119,10 @@ class StopSignDetector(Thread):
         #cv.imshow("finalImage", finalImage)
 
         return (keypoints_all)
-    #===================================================================================
-    #===================================================================================
+    # ===================================================================================
+    # ===================================================================================
+
+
     def detectSign(self, img, watch, centers):
         for points in centers:
             x1 = int(points.pt[0]) - 35
@@ -125,9 +130,6 @@ class StopSignDetector(Thread):
             x2 = int(points.pt[0]) + 35
             y2 = int(points.pt[1]) + 35
 
-            #This is a bit rough. Through trial and error I figured that there's a chance the ROI is just a bit below/above the
-            #correct position, so I make 2 other ROI's, once 16 pixels below and one 16 pixels above. So we check 3 times for each
-            #detected countour center.
             for disp in (0, 4):
                 if (not self.withinBoundsX(x1, img) or  not self.withinBoundsY(y1+disp, img) or not self.withinBoundsX(x2, img) or not self.withinBoundsY(y2+disp, img)):
                     break
@@ -160,7 +162,8 @@ class StopSignDetector(Thread):
                     elif (self.clf.predict(descriptor) == 4):
                         self.outP.send(4)
                         #cv.rectangle(watch, (x1, y1 + disp), (x2, y2 + disp), (0, 0, 255), 2)
-
+                else:
+                    self.outP.send(0)
 
     #====================================================================================
 
@@ -172,7 +175,7 @@ class StopSignDetector(Thread):
             watch - this is where I draw the rectangles and whatnot so it can be tested in practice
             centers - the centers of the regions of interest
             '''
-            watch = self.inP.recv()
+            watch = (self.inP.recv())[1]
             # A dirty drick, unsure if still necessary, but I will leave it here.
             victim = watch[0:(int)(watch.shape[0]/2), (int)(watch.shape[1]/2):watch.shape[1]]
             victim = cv.copyMakeBorder(victim, 0, 0, 0, 32, cv.BORDER_REPLICATE)
