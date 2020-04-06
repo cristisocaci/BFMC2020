@@ -90,7 +90,7 @@ class Controller(ThreadWithStop):
 
         while self._running:
 
-            steer_ang, lines, dist_from_right, dist_from_left = self.inQs[0].get()
+            steer_ang, lines, dist_from_right, dist_from_left, horizontal_line = self.inQs[0].get()
             self.logger.debug('Control: steering angle: ' + str(steer_ang))
             self.logger.debug('Control: lines: ' + str(lines) + ', dist right: ' + str(dist_from_right) + ', dist left: ' + str(dist_from_left))
             sign = self.inPs[0].recv()

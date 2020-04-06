@@ -182,7 +182,7 @@ class SignDetector(Thread):
             
             watch = (self.inP.recv())[1]
             # A dirty drick, unsure if still necessary, but I will leave it here.
-             victim = watch[0:(int)(watch.shape[0]/2), (int)(watch.shape[1]/2):watch.shape[1]]
+            victim = watch[0:(int)(watch.shape[0]/2), (int)(watch.shape[1]/2):watch.shape[1]]
             victim = cv.copyMakeBorder(victim, 0, 0, 0, 32, cv.BORDER_REPLICATE)
             # Get the centers.
             centers = self.detectColorAndCenters(watch)

@@ -169,7 +169,7 @@ class LaneDetector(Thread):
             dim = (x,y)
             frame_copy = cv2.resize(frame_copy, dim, interpolation = cv2.INTER_AREA)
             lane_coordinates = self.get_lines_coordinates(frame_copy)
-            self.outP.send((lane_coordinates, frame_copy.shape))
+
             display_lane = self.display_lines(frame_copy, lane_coordinates)
             #hline = self.if_horizontal(frame)
             if hline == True and ts[2] == False:
@@ -178,15 +178,19 @@ class LaneDetector(Thread):
             elif hline == True and ts[2] == True:
                 ts[1] = time.time()
                 elapsed = ts[1] - ts[0]
-            if hline == False and ts[2] == True:
+            elif hline == False and ts[2] == True:
                 ts[1] = time.time()
                 elapsed = ts[1] - ts[0]
                 ts = [0,0, False]
-            if elapsed > 1.5:
+
+            hor_line = False
+            if elapsed > 0.75:
                 cv2.putText(display_lane, "HORIZONTAL LINE", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
                 cv2.putText(display_lane, "ELAPSED" + str(elapsed), (40, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
                 elapsed = 0
                 hor_line = True
+
+            self.outP.send((lane_coordinates, frame_copy.shape, hor_line))
             #print('LaneDetector, lane_coord: ' + str(lane_coordinates)) #TO BE DELETED
             # x,y,_ = frame_copy.shape
             # mview = frame[x-700:x-200, y-1200:y-200]

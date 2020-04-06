@@ -117,7 +117,7 @@ class SteeringAngle(ThreadWithStop):
 
         """
         while self._running:
-            lane_coordinates, frame_shape = self.inP.recv()
+            lane_coordinates, frame_shape, horizontal_line = self.inP.recv()
             #print('SteeringAngle: ' + str(frame_shape))  #TO BE DELETED
             self.steering_angle = self.stabilize_steering_angle(self.steering_angle,
                                                                 self.get_steering_angle(frame_shape, lane_coordinates),
@@ -137,5 +137,5 @@ class SteeringAngle(ThreadWithStop):
                 # only right detected
                 # self.steering_angle = - abs(self.steering_angle)
                 pass
-            self.outQs[0].put((self.steering_angle, self.lines, self.distFromRight, self.distFromLeft))
+            self.outQs[0].put((self.steering_angle, self.lines, self.distFromRight, self.distFromLeft, horizontal_line))
 
