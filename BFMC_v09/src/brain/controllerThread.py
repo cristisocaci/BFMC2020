@@ -20,7 +20,12 @@ class Controller(ThreadWithStop):
         logging.basicConfig(filename='src/brain/control.log', filemode = 'w', format='%(message)s')
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.DEBUG)
-        
+
+        self.allowedOffset = 50  # needs more testing
+        self.allowedDistanceFromLine = 250  # needs more testing
+        self.allowedMisreadings = 10  # needs more testing
+        self.misreadings = 0
+
         sleep(2)
         self.startSpeed = 0.2
 
@@ -43,6 +48,7 @@ class Controller(ThreadWithStop):
         self.logger.debug(debugInfo + str(data))
         return data
 
+    # from here are basic moving commands
     def forward(self, steer, speed=0.18):
         max_steer = 0.5
         if steer > max_steer:
@@ -79,79 +85,96 @@ class Controller(ThreadWithStop):
         else:
             self.outP.send(self.make_command(steer_angle, speed, debugInfo='TurnRight: '))
 
+    # from here are maneuvers
+    def stop_maneuver(self, waiting_time):
+        self.stop(waiting_time)
+        self.outP.send(self.forward(speed=self.startSpeed, steer=0))
+
+    def pedestrian_crossing_maneuver(self, ang):
+        self.outP.send(self.forward(steer=ang, speed=self.safeSpeed))
+
+    def parking_maneuver(self):
+        self.outP.send(self.forward(0.0))
+        sleep(1)
+        self.outP.send(self.stop(0.1))
+        self.outP.send(self.backward(speed=self.backwardSpeed, steer=19.5, time=0.5))
+        self.outP.send(self.stop(0.1))
+        self.outP.send(self.backward(speed=self.backwardSpeed, steer=-19.5, time=0.5))
+        self.outP.send(self.stop(1))
+        # TODO: implement the maneuver to get out of the parking spot
+
+    def normal_driving(self, lines, dist_from_right, dist_from_left, steer_ang):
+        if lines == 2 and dist_from_right > self.allowedDistanceFromLine \
+                and dist_from_left > self.allowedDistanceFromLine:  # moving forward case (with confidence :D )
+            offset = abs(dist_from_left - dist_from_right)
+            if offset > self.allowedOffset:
+                self.forward(steer_ang, speed=self.forwardSpeed)
+            self.misreadings = 0
+
+        elif lines == 2:  # moving forward case (without confidence :D )
+            if steer_ang != 0:
+                angle = steer_ang / abs(steer_ang) * 5
+            else:
+                angle = 0
+            self.outP.send(self.make_command(steer_angle=angle, speed=self.safeSpeed))
+            self.misreadings = 0
+
+        elif lines == 10:  # turn left case
+            if dist_from_right < self.allowedDistanceFromLine:  # this means that its going outside the lines
+                self.left_turn(steer_ang, speed=self.leftTurnSpeed)
+                pass  # needs an avoidance strategy
+            else:
+                self.left_turn(steer_ang, speed=self.leftTurnSpeed)
+            self.misreadings = 0
+
+        elif lines == 11:  # turn right case
+            if dist_from_left < self.allowedDistanceFromLine:  # this means that its going outside the lines
+                self.right_turn(steer_ang, speed=self.rightTurnSpeed)
+                pass  # needs an avoidance strategy
+            else:
+                self.right_turn(steer_ang, speed=self.rightTurnSpeed)
+                self.misreadings = 0
+
+        elif lines == 0:  # no lines detected
+            """ 
+            -count how many times this happens and if it happens more than a threshold
+             value move backwards in order to go back between the lines
+            -count in order to avoid some misreadings
+            -in the future -> implement intersection crossing 
+             """
+            self.misreadings += 1
+            if self.misreadings == self.allowedMisreadings:
+                self.backward(speed=self.backwardSpeed, time=1)
+                self.misreadings = 0
+
 
     def run(self):
         """
 
         """
-        allowedOffset = 50  # needs more testing
-        allowedDistanceFromLine = 250  # needs more testing
-        allowedMisreadings = 10  # needs more testing
-        misreadings = 5
+
 
         while self._running:
 
             steer_ang, lines, dist_from_right, dist_from_left, horizontal_line = self.inQs[0].get()
             self.logger.debug('Control: steering angle: ' + str(steer_ang))
-            self.logger.debug('Control: lines: ' + str(lines) + ', dist right: ' + str(dist_from_right) + ', dist left: ' + str(dist_from_left))
+            self.logger.debug('Control: lines: ' + str(lines) + ', dist right: ' + str(dist_from_right) +
+                              ', dist left: ' + str(dist_from_left))
             sign = 0  # = self.inPs[0].recv()
             # stop = 1; prioritate = 2; parcare = 3; trecere = 4; nimic = 0
 
             if not horizontal_line:
                 if sign == 0:    # it goes normal
-                    if lines == 2 and dist_from_right > allowedDistanceFromLine and dist_from_left > allowedDistanceFromLine:  # moving forward case
-                        offset = abs(dist_from_left - dist_from_right)
-                        if offset > allowedOffset:
-                            self.forward(steer_ang, speed=self.forwardSpeed)
-                        misreadings = 0
-                    elif lines == 10:  # turn left case
-                        if dist_from_right < allowedDistanceFromLine:  # this means that its going outside the lines
-                            self.left_turn(steer_ang, speed=self.leftTurnSpeed)
-                            pass  # needs an avoidance strategy
-                        else:
-                            self.left_turn(steer_ang, speed=self.leftTurnSpeed)
-                        misreadings = 0
-                    elif lines == 11:  # turn right case
-                        if dist_from_left < allowedDistanceFromLine:  # this means that its going outside the lines
-                            self.right_turn(steer_ang, speed=self.rightTurnSpeed)
-                            pass  # needs an avoidance strategy
-                        else:
-                            self.right_turn(steer_ang, speed=self.rightTurnSpeed)
-                            misreadings = 0
-                    elif lines == 0:  # no lines detected
-                        """ 
-                        -count how many times this happens and if it happens more than a threshold
-                         value move backwards in order to go back between the lines
-                        -count in order to avoid some misreadings
-                        -in the future -> implement intersection crossing 
-                         """
-                        misreadings += 1
-                        if misreadings == allowedMisreadings:
-                            self.backward(speed=self.backwardSpeed, time=1)
-                            misreadings = 0
-                    elif lines == 2:
-                        if steer_ang != 0:
-                            angle = steer_ang / abs(steer_ang) * 5
-                        else:
-                            angle = 0
-                        self.outP.send(self.make_command(steer_angle=angle, speed=self.safeSpeed))
+                    self.normal_driving(lines, dist_from_right, dist_from_left, steer_ang)
 
                 elif sign == 1:     # stops at the sign
-                    self.outP.send(self.stop(2))
-                    self.outP.send(self.forward(speed=self.startSpeed, steer=0))
+                    self.stop_maneuver(2)
 
                 elif sign == 2:     # parking maneuver
-                    self.outP.send(self.stop(0.1))
-                    while self.inPs[0].recv() == 2:
-                        self.outP.send(self.forward(steer=0, speed=self.startSpeed))
-                    self.outP.send(self.stop(0.1))
-                    self.outP.send(self.backward(speed=self.backwardSpeed, steer=19.5, time=0.5))
-                    self.outP.send(self.stop(0.1))
-                    self.outP.send(self.backward(speed=self.backwardSpeed, steer=-19.5, time=0.5))
-                    self.outP.send(self.stop(1))
+                    self.parking_maneuver()
 
-                elif sign == 3:     # slow down and search for pedestrian
-                    self.outP.send(self.forward(steer=steer_ang, speed=self.safeSpeed))
+                elif sign == 3:     # slow down and search for pedestrian -- latter not implemented yet
+                    self.pedestrian_crossing_maneuver(steer_ang)
             else:
                 pass
 
