@@ -67,7 +67,7 @@ class Controller(ThreadWithStop):
         self.outP.send(self.make_command(stop=True, debugInfo='Stop: '))
         sleep(time)
 
-    def left_turn(self, steer_angle=0, speed=0.18,
+    def left_turn(self, steer_angle=0.0, speed=0.18,
                   start_point=(0,0), end_point=(0,0), radius=1.035, arc=False):
         """ If arc is true the car will take the angles based on the end points of the curve and the radius """
 
@@ -76,7 +76,7 @@ class Controller(ThreadWithStop):
         else:
             self.outP.send(self.make_command(steer_angle, speed, debugInfo='TurnLeft: '))
 
-    def right_turn(self, steer_angle=0, speed=0.17,
+    def right_turn(self, steer_angle=0.0, speed=0.17,
                    start_point=(0,0), end_point=(0,0), radius=0.665, arc=False):
         """ If arc is true the car will take the angles based on the end points of the curve and the radius """
 
@@ -94,7 +94,7 @@ class Controller(ThreadWithStop):
         self.outP.send(self.forward(steer=ang, speed=self.safeSpeed))
 
     def parking_maneuver(self):
-        self.outP.send(self.forward(0.0))
+        self.outP.send(self.forward(0.0, self.safeSpeed))
         sleep(1)
         self.outP.send(self.stop(0.1))
         self.outP.send(self.backward(speed=self.backwardSpeed, steer=19.5, time=0.5))
@@ -147,13 +147,19 @@ class Controller(ThreadWithStop):
                 self.backward(speed=self.backwardSpeed, time=1)
                 self.misreadings = 0
 
+    def intersection_crossing(self, direction):
+        self.stop(1)
+        if direction == 'left':
+            self.left_turn(steer_angle=15.0, speed=self.leftTurnSpeed)
+            sleep(1)
+        elif direction == 'right':
+            self.right_turn(steer_angle=20.0, speed=self.rightTurnSpeed)
+            sleep(1)
+        elif direction == 'straight':
+            self.forward(0, self.safeSpeed)
+            sleep(1)
 
     def run(self):
-        """
-
-        """
-
-
         while self._running:
 
             steer_ang, lines, dist_from_right, dist_from_left, horizontal_line = self.inQs[0].get()
@@ -175,6 +181,9 @@ class Controller(ThreadWithStop):
 
                 elif sign == 3:     # slow down and search for pedestrian -- latter not implemented yet
                     self.pedestrian_crossing_maneuver(steer_ang)
-            else:
-                pass
+            else:  # detected the horizontal line before an intersection => intersection crossing maneuver
+                # TODO: add path planning to know where to go in intersection
+                # TODO: add check mechanism to be sure that the line detected is indeed the one from the intersection
+                self.intersection_crossing("straight")
+
 
