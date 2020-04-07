@@ -136,7 +136,7 @@ class CameraPublisher(ThreadWithStop):
             # output image and time stamp
             # Note: The sending process can be blocked, when doesn't exist any consumer process and it reaches the limit size.
             self.outPs[0].send([[stamp], gray])  # to laneDetector
-            self.outPs[1].send([[stamp], data])
+            # self.outPs[1].send([[stamp], data]) # to signDetector
             
             self._stream.seek(0)
             self._stream.truncate()

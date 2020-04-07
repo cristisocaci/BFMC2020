@@ -11,9 +11,9 @@ class Brain(WorkerProcess):
         """
         Args:
             inPs[0]: from LaneDetector
-            inPs[1]: from SerialHandler  ---inactiv
-            inPs[2]: from gps ---inactiv
-            inPs[3]: from SignDetector
+            inPs[1]: from SerialHandler  -- inactive
+            inPs[2]: from gps -- inactive
+            inPs[3]: from SignDetector -- inactive
             outPs: to serial handler
         """
         super(Brain, self).__init__(inPs, outPs)
@@ -31,8 +31,8 @@ class Brain(WorkerProcess):
         # posTh = PositionThread([self.inPs[2]], [self.gpsQueue])
         # self.threads.append(posTh)
 
-        #messRecvTh = MessageReceiver(self.inPs[1], [self.nucleo_data_queue])
-        #self.threads.append(messRecvTh)
+        # messRecvTh = MessageReceiver(self.inPs[1], [self.nucleo_data_queue])
+        # self.threads.append(messRecvTh)
         
     def run(self):
         super(Brain, self).run()

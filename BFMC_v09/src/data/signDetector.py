@@ -189,7 +189,7 @@ class SignDetector(Thread):
             # Detect and classify the signs.
             self.detectSign(victim, watch, centers)
             cv.imshow("watch", watch)
-            #self.outP.send(0)
+            self.outP.send(0)
             
             if cv.waitKey(1) == 27:
                 break

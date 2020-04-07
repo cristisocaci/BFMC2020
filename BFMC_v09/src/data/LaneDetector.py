@@ -157,7 +157,6 @@ class LaneDetector(Thread):
         while True:
             data = self.inP.recv()
             frame_copy = data[1]
-            hor_line = False
             elapsed = 0
             #_, frame_copy = cap.read()
             #frame_copy = imutils.rotate(frame_copy,270)

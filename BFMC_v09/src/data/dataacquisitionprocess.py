@@ -9,10 +9,10 @@ class DataAcquisition(WorkerProcess):
     def __init__(self, inPs, outPs):
         """
          inPs[0] : from camera -> lane detection
-         inPs[1] : from camera -> sign detection
+         inPs[1] : from camera -> sign detection -- inactive
          outPs[0] : from lane det -> steer angle
-         outPs[1]: from gps tracker -> to path finding
-         outPs[2]: from sign det -> to control
+         outPs[1]: from gps tracker -> to path finding -- inactive
+         outPs[2]: from sign det -> to control -- inactive
         """
         super(DataAcquisition, self).__init__(inPs, outPs)
     
@@ -22,8 +22,8 @@ class DataAcquisition(WorkerProcess):
         laneDet = LaneDetector(self.inPs[0], self.outPs[0])
         self.threads.append(laneDet)
 
-        signDet = SignDetector(self.inPs[1], self.outPs[2])
-        self.threads.append(signDet)
+        # signDet = SignDetector(self.inPs[1], self.outPs[2])
+        # self.threads.append(signDet)
 
         # gpsTracker = GpsTracker(self.outPs[1])
         # self.threads.append(gpsTracker)
