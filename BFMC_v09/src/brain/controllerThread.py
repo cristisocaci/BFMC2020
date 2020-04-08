@@ -27,17 +27,17 @@ class Controller(ThreadWithStop):
         self.misreadings = 0
 
         sleep(2)
-        self.startSpeed = 0.2
+        self.startSpeed = 0.17
 
         self.outP.send({'action': 'MCTL', 'speed': self.startSpeed, 'steerAngle' : 0.0})
 
-        self.forwardSpeed = 0.18
+        self.forwardSpeed = 0.15
         self.rightTurnSpeed = 0.16
         self.leftTurnSpeed = 0.16
-        self.backwardSpeed = -0.18
-        self.safeSpeed = 0.17
+        self.backwardSpeed = -0.15
+        self.safeSpeed = 0.15
 
-        sleep(0.5)
+        sleep(1)
         self.outP.send({'action': 'MCTL', 'speed': self.forwardSpeed, 'steerAngle': 0.0})
 
     def make_command(self, steer_angle=0.0, speed=0.17, stop=False, debugInfo = 'No debug info: '):
@@ -145,22 +145,25 @@ class Controller(ThreadWithStop):
             -count in order to avoid some misreadings
             -in the future -> implement intersection crossing 
              """
-            self.misreadings += 1
-            if self.misreadings == self.allowedMisreadings:
-                self.backward(speed=self.backwardSpeed, time=1, debugInfo='Normal Driving')
-                self.misreadings = 0
+            #self.misreadings += 1
+            #if self.misreadings == self.allowedMisreadings:
+             #   self.backward(speed=self.backwardSpeed, time=1, debugInfo='Normal Driving')
+              #  self.misreadings = 0
+            self.forward(0.0, self.safeSpeed, debugInfo='Normal Driving')
 
     def intersection_crossing(self, direction):
-        self.stop(1)
+        self.stop(1, debugInfo='Intersection Crossing')
+        self.forward(0.0, self.startSpeed, debugInfo='Intersection Crossing')
+        sleep(0.2)
         if direction == 'left':
-            self.left_turn(steer_angle=15.0, speed=self.leftTurnSpeed, debugInfo='Intersection Crossing')
-            sleep(1)
+            self.left_turn(steer_angle=-15.5, speed=self.leftTurnSpeed, debugInfo='Intersection Crossing')
+            sleep(4.5)
         elif direction == 'right':
             self.right_turn(steer_angle=20.0, speed=self.rightTurnSpeed, debugInfo='Intersection Crossing')
-            sleep(1)
+            sleep(3)
         elif direction == 'straight':
             self.forward(0, self.safeSpeed, debugInfo='Intersection Crossing')
-            sleep(1)
+            sleep(3)
 
     def run(self):
         while self._running:
@@ -171,22 +174,28 @@ class Controller(ThreadWithStop):
                               ', dist left: ' + str(dist_from_left))
             sign = 0  # = self.inPs[0].recv()
             # stop = 1; prioritate = 2; parcare = 3; trecere = 4; nimic = 0
-
-            if not horizontal_line:
-                if sign == 0:    # it goes normal
+            
+            if horizontal_line:  # detected the horizontal line before an intersection => intersection crossing maneuver
+                while horizontal_line:
+                    steer_ang, lines, dist_from_right, dist_from_left, horizontal_line = self.inQs[0].get()
                     self.normal_driving(lines, dist_from_right, dist_from_left, steer_ang)
-
-                elif sign == 1:     # stops at the sign
-                    self.stop_maneuver(2)
-
-                elif sign == 2:     # parking maneuver
-                    self.parking_maneuver()
-
-                elif sign == 3:     # slow down and search for pedestrian -- latter not implemented yet
-                    self.pedestrian_crossing_maneuver(steer_ang)
-            else:  # detected the horizontal line before an intersection => intersection crossing maneuver
+                    
                 # TODO: add path planning to know where to go in intersection
                 # TODO: add check mechanism to be sure that the line detected is indeed the one from the intersection
-                self.intersection_crossing("straight")
+                self.intersection_crossing("left")
+                
+            if sign == 0:    # it goes normal
+                self.normal_driving(lines, dist_from_right, dist_from_left, steer_ang)
+            elif sign == 1:     # stops at the sign
+                self.stop_maneuver(2)
+
+            elif sign == 2:     # parking maneuver
+                self.parking_maneuver()
+
+            elif sign == 3:     # slow down and search for pedestrian -- latter not implemented yet
+                self.pedestrian_crossing_maneuver(steer_ang)
+    
+                
+                
 
 

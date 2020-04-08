@@ -108,20 +108,20 @@ class LaneDetector(Thread):
 
     def if_horizontal(self, local_img):
         x,y = local_img.shape
-        local_img = local_img[x-400:x-100, y-480:y-120]
+        local_img = local_img[x-350:x-000, y-480:y-120]
         gray = local_img # cv2.cvtColor(local_img,cv2.COLOR_BGR2GRAY)
-        gray = cv2.bitwise_not(gray)
+        # gray = cv2.bitwise_not(gray)
         bw = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C,  cv2.THRESH_BINARY, 15, -2)
         horizontal = np.copy(bw)
         cols = horizontal.shape[1]
         horizontal_size = cols // 7
         horizontalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (horizontal_size, 5))
-        # horizontal = cv2.erode(horizontal, horizontalStructure)
-        # horizontal = cv2.dilate(horizontal, horizontalStructure)
+        horizontal = cv2.erode(horizontal, horizontalStructure)
+        horizontal = cv2.dilate(horizontal, horizontalStructure)
 
         _, contours, hier = cv2.findContours(horizontal,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
         for cnt in contours:
-            if 200<cv2.contourArea(cnt)<5000:
+            if 300<cv2.contourArea(cnt)<5000:
                 rect = cv2.minAreaRect(cnt)
                 #box = cv2.boxPoints(rect)
                 #box = np.int0(box)
@@ -184,8 +184,8 @@ class LaneDetector(Thread):
                 ts = [0,0, False]
 
             hor_line = False
-            if elapsed > 0.75:
-                #cv2.putText(display_lane, "HORIZONTAL LINE", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+            if elapsed > 1.5:
+                cv2.putText(display_lane, "HORIZONTAL LINE", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
                 #cv2.putText(display_lane, "ELAPSED" + str(elapsed), (40, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
                 elapsed = 0
                 hor_line = True
@@ -196,7 +196,7 @@ class LaneDetector(Thread):
             # mview = frame[x-700:x-200, y-1200:y-200]
             #cv2.imshow('test1', frame_copy)
             #display_lane = self.display_lines(frame_copy, lane_coordinates)
-            #cv2.imshow('test2', display_lane)
+            cv2.imshow('test2', display_lane)
             #cv2.imshow("testM", mview)
 
             if cv2.waitKey(1) == 27:
