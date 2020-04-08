@@ -108,7 +108,7 @@ class LaneDetector(Thread):
 
     def if_horizontal(self, local_img):
         x,y = local_img.shape
-        local_img = local_img[x-700:x-200,y-1200:y-200]
+        local_img = local_img[x-400:x-100, y-480:y-120]
         gray = local_img # cv2.cvtColor(local_img,cv2.COLOR_BGR2GRAY)
         gray = cv2.bitwise_not(gray)
         bw = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C,  cv2.THRESH_BINARY, 15, -2)
@@ -116,14 +116,15 @@ class LaneDetector(Thread):
         cols = horizontal.shape[1]
         horizontal_size = cols // 7
         horizontalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (horizontal_size, 5))
-        horizontal = cv2.erode(horizontal, horizontalStructure)
-        horizontal = cv2.dilate(horizontal, horizontalStructure)
+        # horizontal = cv2.erode(horizontal, horizontalStructure)
+        # horizontal = cv2.dilate(horizontal, horizontalStructure)
+
         _, contours, hier = cv2.findContours(horizontal,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
         for cnt in contours:
             if 200<cv2.contourArea(cnt)<5000:
                 rect = cv2.minAreaRect(cnt)
-                box = cv2.boxPoints(rect)
-                box = np.int0(box)
+                #box = cv2.boxPoints(rect)
+                #box = np.int0(box)
                 cv2.drawContours(local_img,[cnt],0,(0,255,0),2)
                 #cv2.drawContours(horizontal,[cnt],0,255,-1)
                 #cv2.putText(local_img, "HORIZONTAL LINE", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
@@ -162,9 +163,9 @@ class LaneDetector(Thread):
             #frame_copy = imutils.rotate(frame_copy,270)
             x,y = frame_copy.shape
             hline = self.if_horizontal(frame_copy)
-            mview = frame_copy[x-700:x-200, y-1200:y-200]
-            x = int(x * 50/100) 
-            y = int(y * 50/100)
+            #mview = frame_copy[x-700:x-200, y-1200:y-200]
+            x = int(x * 80/100) 
+            y = int(y * 80/100)
             dim = (x,y)
             frame_copy = cv2.resize(frame_copy, dim, interpolation = cv2.INTER_AREA)
             lane_coordinates = self.get_lines_coordinates(frame_copy)
@@ -184,8 +185,8 @@ class LaneDetector(Thread):
 
             hor_line = False
             if elapsed > 0.75:
-                cv2.putText(display_lane, "HORIZONTAL LINE", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
-                cv2.putText(display_lane, "ELAPSED" + str(elapsed), (40, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+                #cv2.putText(display_lane, "HORIZONTAL LINE", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+                #cv2.putText(display_lane, "ELAPSED" + str(elapsed), (40, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
                 elapsed = 0
                 hor_line = True
 
