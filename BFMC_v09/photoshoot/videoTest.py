@@ -10,7 +10,7 @@ import argparse
 # args = vars(ap.parse_args())
 
 
-cap = cv2.VideoCapture('Records/Set3/4.h264')
+cap = cv2.VideoCapture(0)
 
 fourcc = cv2.VideoWriter_fourcc(*'DIVX')
 out = cv2.VideoWriter('Records/croppedVideo.avi', fourcc, 20.0, (640, 480))
