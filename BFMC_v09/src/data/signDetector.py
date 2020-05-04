@@ -34,9 +34,10 @@ class SignDetector(Thread):
                                 self.L2HysThreshold, self.gammaCorrection, self.nlevels, self.signedGradients)
 
         self.params = cv.SimpleBlobDetector_Params()
-        self.params.minDistBetweenBlobs = 35
-        self.params.minThreshold = 0
-        self.params.maxThreshold = 256
+        self.params.minDistBetweenBlobs = 40
+        self.params.minThreshold = 253
+        self.params.maxThreshold = 255
+        self.params.thresholdStep = 1
 
         self.params.filterByArea = True
         self.params.minArea = 300
@@ -83,19 +84,19 @@ class SignDetector(Thread):
         imgHSV = cv.cvtColor(img, cv.COLOR_BGR2HSV)
         imgHSV = cv.GaussianBlur(imgHSV, (5, 5), 0)
         # Range for lower RED
-        lower_red = np.array([0, 90, 25])
-        upper_red = np.array([5, 255, 255])
+        lower_red = np.array([0, 60, 50])
+        upper_red = np.array([10, 255, 255])
         mask1 = cv.inRange(imgHSV, lower_red, upper_red)
         # Range for upper range
-        lower_red = np.array([155, 90, 25])
+        lower_red = np.array([160, 60, 50])
         upper_red = np.array([180, 255, 255])
         mask2 = cv.inRange(imgHSV, lower_red, upper_red)
         # Red mask
         red_det = mask1 + mask2
         # Yellow mask
-        yellow_det = cv.inRange(imgHSV, (15, 60, 25), (30, 255, 255))
+        yellow_det = cv.inRange(imgHSV, (15, 90, 20), (35, 255, 255))
         # Blue mask
-        blue_det = cv.inRange(imgHSV, (95, 100, 25), (140, 250, 250))
+        blue_det = cv.inRange(imgHSV, (95, 90, 20), (140, 250, 250))
 
         #finalMask = red_det + yellow_det + blue_det
         
